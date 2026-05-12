@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>リプロマヴィ 取材のご案内</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fffdf9;
+      --paper-soft: #fbf7f1;
+      --line: #e6ddd1;
+      --text: #40392f;
+      --muted: #73695d;
+      --green: #5d6248;
+      --green-dark: #3f4633;
+      --orange: #d56f36;
+      --orange-soft: #f2c8ab;
+      --shadow: 0 12px 28px rgba(66, 50, 33, 0.07);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(213,111,54,.08), transparent 28%),
+        radial-gradient(circle at 92% 3%, rgba(93,98,72,.08), transparent 24%),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.85;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-top: 36px;
+      padding: clamp(26px, 4vw, 44px);
+      background: rgba(255,253,249,.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      white-space: nowrap;
+      color: var(--green);
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.35;
+      letter-spacing: .05em;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(93,98,72,.25), rgba(93,98,72,0));
+    }
+
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .lead-text { max-width: 860px; }
+
+    /* hero */
+    .hero {
+      width: min(1160px, calc(100% - 32px));
+      min-height: 650px;
+      margin: 24px auto 0;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 22px 54px rgba(56,45,32,.14);
+      background: #1f1e1a;
+      isolation: isolate;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: -2;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(31,30,26,.82) 0%, rgba(31,30,26,.56) 40%, rgba(31,30,26,.20) 72%, rgba(31,30,26,.05) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 620px;
+      padding: 64px 58px;
+      color: #fffdf7;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.28);
+      backdrop-filter: blur(6px);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffb070;
+    }
+
+    .hero h1 {
+      margin: 24px 0 16px;
+      font-size: clamp(42px, 6.6vw, 76px);
+      line-height: 1.12;
+      letter-spacing: .04em;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    }
+
+    .hero-lead {
+      margin: 0;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.9;
+      font-weight: 700;
+      text-shadow: 0 3px 16px rgba(0,0,0,.18);
+    }
+
+    .hero-sub {
+      margin: 16px 0 0;
+      color: rgba(255,253,247,.92);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: transform .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(6px);
+    }
+
+    /* reason */
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .reason-card {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+
+    .reason-icon {
+      width: 74px;
+      height: 74px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid #eadcc9;
+      background: #f5ecdf;
+      color: var(--orange);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .reason-card h3 {
+      margin: 0 0 6px;
+      color: var(--orange);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .reason-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* about + map */
+    .about-section {
+      padding: clamp(28px, 4.2vw, 46px);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      gap: clamp(28px, 4vw, 54px);
+      align-items: start;
+    }
+
+    .about-left,
+    .about-right {
+      min-width: 0;
+    }
+
+    .brand-intro {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .brand-logo-box {
+      padding: 34px 22px;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper-soft);
+    }
+
+    .brand-en {
+      color: #8a4a2a;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1.1;
+    }
+
+    .brand-ja {
+      margin-top: 8px;
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 2;
+      margin: 0;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .mini-card {
+      min-height: 132px;
+      padding: 20px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green-dark);
+      font-size: 16px;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .site-link {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .map-panel {
+      height: 100%;
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,253,248,.96), rgba(251,246,238,.96));
+    }
+
+    .map-panel h3 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 34px;
+      letter-spacing: .05em;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    }
+
+    .map-panel p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .area-map-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: #fffaf2;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+    }
+
+    .legend-core { background: #df7c49; }
+    .legend-sub { background: #f0c4a3; }
+
+    /* photos */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .photo-card {
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(73,55,36,.05);
+    }
+
+    .photo-card img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .photo-card-body {
+      padding: 15px 16px 17px;
+    }
+
+    .photo-card-body h3 {
+      margin: 0 0 6px;
+      color: var(--green);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .photo-card-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* flow */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .flow-grid-four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .flow-card {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+
+    .flow-num {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .flow-card h3 {
+      margin: 0 0 8px;
+      color: var(--orange);
+      font-size: 22px;
+    }
+
+    .flow-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* faq */
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      padding: 20px 22px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+
+    .faq-item h3 {
+      margin: 0 0 10px;
+      color: var(--green-dark);
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* profile */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .profile-card {
+      padding: 23px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+
+    .profile-card h3 {
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 22px;
+    }
+
+    .profile-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .profile-card p:last-child { margin-bottom: 0; }
+
+    .interviewer-card {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .interviewer-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fffdf9;
+      box-shadow: 0 0 0 1px var(--line), 0 10px 22px rgba(66, 50, 33, 0.12);
+      background: #efe6d8;
+    }
+
+    /* cta */
+    .cta {
+      margin-top: 34px;
+      padding: 38px 32px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #74785a, #52553d);
+      color: #fffdf7;
+      text-align: center;
+      box-shadow: 0 15px 36px rgba(78,77,55,.24);
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 3vw, 42px);
+      letter-spacing: .05em;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    }
+
+    .cta p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: rgba(255,253,247,.9);
+    }
+
+    .small-note {
+      margin-top: 14px;
+      color: rgba(255,253,247,.72);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .hero { min-height: 620px; }
+      .hero-content { padding: 44px 26px; }
+      .hero::before { background: linear-gradient(180deg, rgba(31,30,26,.76) 0%, rgba(31,30,26,.50) 48%, rgba(31,30,26,.18) 100%); }
+
+      .about-layout,
+      .brand-intro,
+      .reason-grid,
+      .photo-grid,
+      .flow-grid,
+      .flow-grid-four,
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-cards { grid-template-columns: 1fr 1fr; }
+      .section { padding: 26px; }
+      .map-panel { padding: 22px; }
+    }
+
+    @media (max-width: 640px) {
+      .container,
+      .hero { width: min(100% - 20px, 1160px); }
+      .hero { min-height: 560px; border-radius: 24px; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .about-cards { grid-template-columns: 1fr; }
+      .reason-card {
+        align-items: flex-start;
+      }
+
+      .interviewer-card {
+        grid-template-columns: 1fr;
+      }
+      .section-title h2 { white-space: normal; }
+      .section-title::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <img
+      class="hero-image"
+      src="images/hero-camera-low-angle.png"
+      alt="青空の下、街に立つカメラマンの後ろ姿"
+      loading="eager"
+      decoding="async"
+    >
+    <div class="hero-content">
+      <div class="eyebrow">埼玉県南部エリアの地域情報メディア</div>
+      <h1>リプロマヴィ<br>取材のご案内</h1>
+      <p class="hero-lead">
+        埼玉県南部エリアの飲食店や施設の魅力を、地域の読者に向けてご紹介します。
+      </p>
+      <p class="hero-sub">
+        掲載料・広告料はかかりません。ライター兼カメラマンが伺い、取材・撮影を行います。
+      </p>
+
+      
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="section">
+      <div class="section-title">
+        <h2>リプロマヴィの取材が選ばれる理由</h2>
+      </div>
+
+      <div class="reason-grid">
+        <div class="reason-card">
+          <div class="reason-icon">¥0</div>
+          <div>
+            <h3>掲載料は0円</h3>
+            <p>取材・掲載に費用はかかりません。広告料なども一切いただきません。</p>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">取材</div>
+          <div>
+            <h3>負担の少ない取材</h3>
+            <p>ライター1名で伺う、コンパクトな取材です。大がかりな準備は必要ありません。</p>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">地域</div>
+          <div>
+            <h3>地域の読者に届く</h3>
+            <p>埼玉県南部で暮らす方に向けて発信します。近隣のファミリー層にも届きます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-layout">
+        <div class="about-left">
+          <div class="section-title">
+            <h2>リプロマヴィとは</h2>
+          </div>
+
+          <div class="brand-intro">
+            <div class="brand-logo-box">
+              <div class="brand-en">LiproMAVIE</div>
+              <div class="brand-ja">リプロマヴィ</div>
+            </div>
+
+            <p class="about-copy">
+              「リプロマヴィ（LiproMAVIE）」は、埼玉県南部エリアのグルメとお出かけ情報を中心に発信するWebメディアです。「ma vie」はフランス語で「私の暮らし」という意味。地域に暮らす方が、自分らしい毎日を楽しむきっかけになるような情報を発信しています。
+            </p>
+          </div>
+
+          <div class="about-cards">
+            <div class="mini-card">
+              <strong>地域密着のメディア</strong>
+              <p>埼玉県南部で暮らす方に向けて、身近な情報を発信します。</p>
+            </div>
+            <div class="mini-card">
+              <strong>グルメ・お出かけ中心</strong>
+              <p>飲食店、施設、イベントなどを親しみやすく紹介します。</p>
+            </div>
+            <div class="mini-card">
+              <strong>ファミリー層にも届く</strong>
+              <p>親子で楽しめる場所や体験も、積極的に取り上げています。</p>
+            </div>
+            <div class="mini-card">
+              <strong>スマホでも見やすい</strong>
+              <p>軽やかに読めて、魅力が伝わる記事づくりを大切にしています。</p>
+            </div>
+          </div>
+
+          <p class="site-link">
+            公式サイト：
+            <a href="https://www.lipro-mavie.com" target="_blank" rel="noopener">https://www.lipro-mavie.com</a>
+          </p>
+        </div>
+
+        <div class="about-right">
+          <div class="map-panel">
+            <h3>取材エリア</h3>
+            <p>埼玉県南部を中心に、周辺エリアも取材しています。</p>
+
+            <img
+              src="images/saitama-area-map-square.png"
+              alt="リプロマヴィの取材エリアを示した埼玉県南部のイラスト地図"
+              class="area-map-image"
+            >
+
+            <div class="legend">
+              <div class="legend-item">
+                <span class="legend-dot legend-core"></span>
+                <span>特に取材機会の多いエリア</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot legend-sub"></span>
+                <span>周辺で取材しているエリア</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>こんな取材をしています</h2>
+      </div>
+      <p class="intro lead-text"> お店の雰囲気、料理の湯気、スタッフのみなさんの表情、家族で楽しめる時間。リプロマヴィでは、単なる情報紹介ではなく、「行ってみたい」と思える空気ごと伝える記事づくりを大切にしています。 </p>
+      <p class="intro lead-text">※撮影内容は店舗さまのご都合に合わせます&nbsp;</p>
+<div class="photo-grid">
+      <article class="photo-card">
+        <img src="images/staff.jpg" alt="スタッフのみなさんの集合写真">
+        <div class="photo-card-body">
+          <h3>スタッフのみなさんの想い</h3>
+          <p>お店や施設の雰囲気が伝わるように、人の表情も大切に撮影します。</p>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="images/food-hot.jpg" alt="熱々の料理写真">
+        <div class="photo-card-body">
+          <h3>思わず食べたくなる料理写真</h3>
+          <p>湯気やツヤ、ライブ感が伝わる一枚で、記事の魅力をぐっと高めます。</p>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="images/craft.jpg" alt="職人の技が伝わる写真">
+        <div class="photo-card-body">
+          <h3>職人の技やこだわり</h3>
+          <p>手仕事の美しさや、目の前で感じる臨場感も丁寧に紹介します。</p>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="images/family.jpg" alt="親子で楽しむ体験の写真">
+        <div class="photo-card-body">
+          <h3>親子で楽しむ地域体験</h3>
+          <p>ファミリー層にも伝わるように、体験の楽しさや安心感も切り取ります。</p>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="images/drink.jpg" alt="サービスの魅力が伝わる写真">
+        <div class="photo-card-body">
+          <h3>お店ならではの魅力</h3>
+          <p>メニューや設備、演出など、その場所らしさが伝わるポイントも撮影します。</p>
+        </div>
+      </article>
+
+      <article class="photo-card">
+        <img src="images/sweets.jpg" alt="スイーツの写真">
+        <div class="photo-card-body">
+          <h3>スイーツや季節商品も紹介</h3>
+          <p>小さな魅力も見逃さず、読者が気になるポイントを丁寧に届けます。</p>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section class="section" id="interview">
+      <div class="section-title">
+        <h2>取材について</h2>
+      </div>
+      <p class="intro lead-text">
+        取材は、ライター兼カメラマンが1名で伺う簡易的なものです。大がかりな撮影ではなく、貴施設の雰囲気や魅力が伝わるよう、簡単なお話をお聞きしながら、写真を数点撮影させていただきます。
+        飲食店の場合は外観・内観・おすすめメニュー・調理風景など、施設の場合は館内の雰囲気・利用シーン・特徴的なポイントなどを撮影することが多いです。
+      </p>
+
+      <div class="flow-grid flow-grid-four">
+        <div class="flow-card">
+          <div class="flow-num">1</div>
+          <h3>日程調整</h3>
+          <p>ご都合のよい日時を確認し、取材日を調整します。</p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-num">2</div>
+          <h3>取材</h3>
+          <p>ライター兼カメラマンが伺い、簡単なヒアリングと撮影を行います。</p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-num">3</div>
+          <h3>記事確認</h3>
+          <p>掲載前に、事実関係や表記について確認をお願いしております。</p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-num">4</div>
+          <h3>記事掲載</h3>
+          <p>確認後、リプロマヴィに記事を掲載します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-title">
+        <h2>よくある質問</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Q. 掲載費用はかかりますか？</h3>
+          <p>A. いいえ。掲載料・広告料などの費用は一切いただいておりません。費用は0円です。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q. 取材では何をすればよいですか？</h3>
+          <p>A. 簡単なお話をお聞かせください。お店や施設の特徴、こだわり、おすすめポイントなどを伺い、あわせて写真を撮影させていただきます。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q. 取材時間はどれくらいですか？</h3>
+          <p>A. 内容にもよりますが、簡易的な取材の場合は30分〜1時間程度を目安にしています。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q. 掲載前に内容を確認できますか？</h3>
+          <p>A. はい、事実関係や表記の確認をお願いしております。ただし、内容についてはお任せいただきます。</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q. どこに掲載されますか？</h3>
+          <p>A. Webメディア「リプロマヴィ」内の記事として掲載されます。記事公開後は、必要に応じてSNSなどでも紹介する場合があります。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="profile">
+      <div class="section-title">
+        <h2>運営会社・取材担当者について</h2>
+      </div>
+
+      <div class="profile-grid">
+        <div class="profile-card">
+          <h3>運営会社</h3>
+          <p>
+            株式会社リプロエージェンシー<br>
+            東京都豊島区南大塚1-60-20<br>
+            天翔大塚駅前ビル2F
+          </p>
+          <p>
+            公式サイト：<br>
+            <a href="http://liproagency.com" target="_blank" rel="noopener">http://liproagency.com</a>
+          </p>
+        </div>
+
+        <div class="profile-card interviewer-card">
+          <img
+            src="images/interviewer-ito.jpg"
+            alt="取材担当者 伊藤の顔写真"
+            class="interviewer-photo"
+          >
+          <div>
+            <h3>取材担当</h3>
+            <p>
+              フリーのライター兼カメラマンの伊藤です。株式会社リプロエージェンシーから依頼を受け、リプロマヴィの記事取材・撮影を担当しております。
+            </p>
+            <p>
+              ご不明な点がございましたら、どうぞお気軽にお問い合わせください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>取材にご協力いただけますと幸いです</h2>
+      <p>
+        地域の方に、貴施設の魅力を分かりやすく、楽しくお届けできるよう丁寧に取材いたします。ご都合のよい日時をご相談のうえ、無理のない形で進めさせていただきます。
+      </p>
+     
+    </section>
+
+  </main>
+</body>
+</html>
